@@ -7,12 +7,6 @@ pipeline {
 
     stages {
 
-        stage('Clone Code') {
-            steps {
-                git 'https://github.com/shivanipunj/shivaniamol-newproject.git'
-            }
-        }
-
         stage('Build .NET App') {
             steps {
                 sh 'dotnet restore src/MyApp/MyApp.csproj'
