@@ -7,19 +7,16 @@ pipeline {
 
     stages {
 
-        stage('Build .NET App') {
+       stage('Build .NET App') {
             steps {
-                dir('src/myapp') {
-                    bat 'dotnet restore'
-                    bat 'dotnet build'
-                }
+                bat 'dotnet restore src\\myapp'
+                bat 'dotnet build src\\myapp'
             }
         }
-       stage('Publish App') {
+
+        stage('Publish App') {
             steps {
-                dir('src/myapp') {
-                    bat 'dotnet publish -c Release -o publish'
-                }
+                bat 'dotnet publish src\\myapp -c Release -o publish'
             }
         }
         stage('Build Docker Image') {
