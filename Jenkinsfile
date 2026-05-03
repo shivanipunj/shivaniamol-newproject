@@ -9,26 +9,26 @@ pipeline {
 
         stage('Build .NET App') {
             steps {
-                sh 'dotnet restore src/MyApp/MyApp.csproj'
-                sh 'dotnet build src/MyApp/MyApp.csproj'
+                bat 'dotnet restore src/myapp'
+                bat 'dotnet build src/myapp'
             }
         }
 
         stage('Publish App') {
             steps {
-                sh 'dotnet publish src/MyApp/MyApp.csproj -c Release -o publish'
+                bat 'dotnet publish src/MyApp/MyApp.csproj -c Release -o publish'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t $DOCKER_IMAGE .'
+                bat 'docker build -t $DOCKER_IMAGE .'
             }
         }
 
         stage('Run Container') {
             steps {
-                sh 'docker run -d -p 8080:80 $DOCKER_IMAGE'
+                bat 'docker run -d -p 8080:80 $DOCKER_IMAGE'
             }
         }
     }
