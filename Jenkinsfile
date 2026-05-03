@@ -13,7 +13,11 @@ pipeline {
                 bat 'dotnet build src\\myapp'
             }
         }
-
+stage('Check Dotnet') {
+    steps {
+        bat 'dotnet --info'
+    }
+}
         stage('Publish App') {
             steps {
                 bat 'dotnet publish src\\myapp -c Release -o publish'
