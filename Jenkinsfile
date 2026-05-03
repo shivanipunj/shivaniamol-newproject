@@ -30,5 +30,10 @@ pipeline {
                 bat 'docker run -d -p 8080:80 $DOCKER_IMAGE'
             }
         }
+        stage('Clean') {
+        steps {
+            deleteDir()
+        }
+}
     }
 }
