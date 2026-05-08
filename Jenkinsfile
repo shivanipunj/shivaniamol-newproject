@@ -25,13 +25,13 @@ stage('Check Dotnet') {
         }
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t $DOCKER_IMAGE .'
+                bat 'docker build -t %DOCKER_IMAGE% .'
             }
         }
 
         stage('Run Container') {
             steps {
-                bat 'docker run -d -p 8080:80 $DOCKER_IMAGE'
+                bat 'docker run -d -p 8080:80 %DOCKER_IMAGE%'
             }
         }
         stage('Clean') {
